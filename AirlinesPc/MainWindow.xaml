@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Label Content="Válasszon kiinduló várost: "/>
+            <ComboBox Width="120" Name="StartingCity" SelectionChanged="StartingCity_SelectionChanged"/>
+            <Label Content="Válasszon cél várost: " IsEnabled="False" Name="TargetLabel"/>
+            <ComboBox Width="120" Name="TargetCity" IsEnabled="False" SelectionChanged="TargetCity_SelectionChanged"/>
+            <Label Content="Összes járat mutatása: "/>
+            <Button Content="Mutat" Width="70" Name="ShowAllFlights" Click="ShowAllFlights_Click"/>
+        </StackPanel>
+        <Grid Name="FlightsGrid" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            </Grid>
     </Grid>
 </Window>
