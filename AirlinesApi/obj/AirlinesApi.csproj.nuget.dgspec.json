@@ -1,32 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\Airlines\\AirlinesApi\\AirlinesApi.csproj": {}
+    "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\AirlinesApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\Airlines\\AirlinesApi\\AirlinesApi.csproj": {
+    "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\AirlinesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\Airlines\\AirlinesApi\\AirlinesApi.csproj",
+        "projectUniqueName": "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\AirlinesApi.csproj",
         "projectName": "AirlinesApi",
-        "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\Airlines\\AirlinesApi\\AirlinesApi.csproj",
-        "packagesPath": "C:\\Users\\isako\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\Airlines\\AirlinesApi\\obj\\",
+        "projectPath": "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\AirlinesApi.csproj",
+        "packagesPath": "C:\\Users\\Bence-PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\isako\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bence-PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
