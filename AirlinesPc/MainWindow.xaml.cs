@@ -68,6 +68,111 @@ namespace AirlinesPc
                 TargetLabel.IsEnabled = false;
             }
         }
+        public void HeaderGenerate()
+        { 
+            int cols=0;
+            var label = new Label()
+            {
+                Content = "Indul:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+            label = new Label()
+            {
+                Content = "Érkezik:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+            label = new Label()
+            {
+                Content = "Légitársaság neve:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+            label = new Label()
+            {
+                Content = "Útvonal hossza (km):" 
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+            label = new Label()
+            {
+                Content = "Repülési idő:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+            label = new Label()
+            {
+                Content = "Km díj Ft-ban:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            cols++;
+        }
+        public void FlightContent(Flights item,int rows)
+        {
+            int cols = 0;
+            var label = new Label()
+            {
+                Content = item.StartCity
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            label = new Label()
+            {
+                Content = item.TargetCity
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            label = new Label()
+            {
+                Content = item.AirlineName
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            label = new Label()
+            {
+                Content = item.TravelDistance
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            label = new Label()
+            {
+                Content = item.TimeHour + ":" + item.TimeMinute
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            label = new Label()
+            {
+                Content = item.KmPrice
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, rows);
+            cols++;
+            rows++;
+        }
         public void GridGenerate()
         {
             FlightsGrid.Children.Clear();
@@ -75,66 +180,18 @@ namespace AirlinesPc
             FlightsGrid.ColumnDefinitions.Clear();
             for (int i = 0; i < 6; i++)
             {
-                FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(130, GridUnitType.Pixel) });
             }
-            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(35, GridUnitType.Pixel) });
+            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(35, GridUnitType.Pixel) });
 
-            int cols = 0;
-            int rows = 0;
+            
+            HeaderGenerate();
             foreach (var item in FlightRoutes)
             {
                 if (item.StartCity == StartingCity.SelectedValue.ToString() && item.TargetCity == TargetCity.SelectedValue.ToString())
                 {
-                    var label = new Label()
-                    {
-                        Content = "Indul: \n" + item.StartCity
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    label = new Label()
-                    {
-                        Content = "Érkezik: \n" + item.TargetCity
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    label = new Label()
-                    {
-                        Content = "Légitársaság neve: \n" + item.AirlineName
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    label = new Label()
-                    {
-                        Content = "Útvonal hossza (km): \n" + item.TravelDistance
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    label = new Label()
-                    {
-                        Content = "Repülési idő: \n" + item.TimeHour + ":"+item.TimeMinute
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    label = new Label()
-                    {
-                        Content = "Km díj Ft-ban \n" + item.KmPrice
-                    };
-                    FlightsGrid.Children.Add(label);
-                    Grid.SetColumn(label, cols);
-                    Grid.SetRow(label, rows);
-                    cols++;
-                    rows++;
+                    FlightContent(item,1);
                     break;
                 }
             }
@@ -147,26 +204,18 @@ namespace AirlinesPc
             FlightsGrid.ColumnDefinitions.Clear();
             for (int i = 0; i < FlightRoutes.Count; i++)
             {
-                FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                FlightsGrid.RowDefinitions.Add(new RowDefinition());
+                FlightsGrid.RowDefinitions[i].Height = new GridLength(50,GridUnitType.Pixel);
             }
             for (int i = 0; i <= 6; i++)
             {
-                FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+                FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                FlightsGrid.ColumnDefinitions[i].Width = new GridLength(130, GridUnitType.Pixel);
             }
+            HeaderGenerate();
             for (int i = 0; i < FlightRoutes.Count; i++)
             {
-                for (int j = 0; j < 6; j++)
-                {
-                    var l = new Label()
-                    {
-                        Content = FlightRoutes[i].StartCity,
-                        Background = RED,
-                        Margin = new Thickness(1,1,1,1)
-                    };
-                    FlightsGrid.Children.Add(l);
-                    Grid.SetRow(l,i);
-                    Grid.SetColumn(l, j);
-                }
+                FlightContent(FlightRoutes[i], i + 1);
             }
         }
         private void TargetCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
