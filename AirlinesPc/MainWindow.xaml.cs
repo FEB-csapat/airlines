@@ -1,19 +1,9 @@
 ﻿using AirlinesPc.DataReaders;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 
 namespace AirlinesPc
@@ -28,13 +18,16 @@ namespace AirlinesPc
         public List<CityPopulation> Cities = new List<CityPopulation>();
         public List<Flights> FlightRoutes = new List<Flights>();
         CityPopulation helper;
+        int currentrow = 0;
+        Button[] buttons = new Button[350];
+        int buttoncounter = 0;
         public MainWindow()
         {
             ApiReader();
             this.DataContext = this;
             InitializeComponent();
             StartingCity.ItemsSource = StartingCities;
-            
+            TargetCity.ItemsSource = TargetCities;
         }
         public void ApiReader()
         {
@@ -48,24 +41,29 @@ namespace AirlinesPc
             {
                 FlightRoutes.Add(new Flights(item));
             }
+            StartingCities = StartingCities.OrderBy(x => x).ToList();
+            TargetCities = StartingCities;
         }
-
-        string temp = "";
         private void StartingCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (StartingCity.SelectedValue.ToString() !="")
+            if (StartingCity.SelectedValue.ToString() !=""&& StartingCity.SelectedValue is not null)
             {
-                temp = StartingCity.SelectedValue.ToString();
                 TargetCity.IsEnabled = true;
                 TargetLabel.IsEnabled = true;
-                TargetCities = StartingCities;
-                TargetCities.Remove(temp);
-                TargetCity.ItemsSource = TargetCities;
             }
             else
             {
                 TargetCity.IsEnabled = false;
                 TargetLabel.IsEnabled = false;
+            }
+        }
+        private void TargetCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ShowFlights();
+            StartingCity.ItemsSource = StartingCities;
+            if (StartingCity.SelectedValue.ToString()==TargetCity.SelectedValue.ToString())
+            {
+                MessageBox.Show("Nem lehet megegyező az indulóváros, és a célváros!");
             }
         }
         public void HeaderGenerate(int row)
@@ -195,8 +193,6 @@ namespace AirlinesPc
                 }
             }
         }
-        Button[] buttons = new Button[1000];
-        int buttoncounter = 0;
         public void Details(Flights item, int rows)
         {
             int cols = 0;
@@ -248,9 +244,7 @@ namespace AirlinesPc
             FlightsGrid.Children.Clear();
             FlightsGrid.RowDefinitions.Clear();
             FlightsGrid.ColumnDefinitions.Clear();
-            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
-            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
-            for (int i = 0; i < FlightRoutes.Count+1; i++)
+            for (int i = 0; i < FlightRoutes.Count+3; i++)
             {
                 FlightsGrid.RowDefinitions.Add(new RowDefinition());
                 FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
@@ -270,18 +264,14 @@ namespace AirlinesPc
                 }
                 else
                 {
-                    MoreDetailsAddRow(FlightRoutes[currentrow-1], currentrow);
+                    HeaderGenerate(currentrow + 1);
+                    FlightContent(FlightRoutes[currentrow - 1], currentrow + 2);
                     i++;
                     Details(FlightRoutes[i-1], i + 2);
                     Details(FlightRoutes[i], i+3);
                     currentdetails += 2;
                 }
             }
-        }
-        public void MoreDetailsAddRow(Flights item,int row)
-        {
-            HeaderGenerate(row + 1);
-            FlightContent(item, row+2);
         }
         public void DetailHeader()
         {
@@ -311,14 +301,10 @@ namespace AirlinesPc
             Grid.SetRow(label, 0);
             cols++;
         }
-        static readonly Brush RED = new SolidColorBrush(Color.FromRgb(127, 0, 0));
-
-        int currentrow = 0;
         public void GetPosition(Button button)
         {
             currentrow = Grid.GetRow(button);
         }
-        bool IsClicked = false;
         private void Bt_Click(object sender, RoutedEventArgs e)
         {
             GetPosition(sender as Button);
@@ -346,11 +332,6 @@ namespace AirlinesPc
                 Details(FlightRoutes[i], i + 1);
             }
         }
-        private void TargetCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ShowFlights();
-        }
-
         private void ShowAllFlights_Click(object sender, RoutedEventArgs e)
         {
             ListAllFlights();
