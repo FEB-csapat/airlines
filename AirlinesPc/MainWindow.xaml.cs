@@ -175,6 +175,7 @@ namespace AirlinesPc
         }
         public void ShowFlights()
         {
+            buttoncounter = 0;
             FlightsGrid.Children.Clear();
             FlightsGrid.RowDefinitions.Clear();
             FlightsGrid.ColumnDefinitions.Clear();
@@ -194,9 +195,10 @@ namespace AirlinesPc
                 }
             }
         }
+        Button[] buttons = new Button[1000];
+        int buttoncounter = 0;
         public void Details(Flights item, int rows)
         {
-            int buttoncounter = 0;
             int cols = 0;
             var label = new Label()
             {
@@ -236,16 +238,19 @@ namespace AirlinesPc
             Grid.SetRow(bt, rows);
             bt.Click += Bt_Click;
             buttons[buttoncounter] = bt;
+            buttoncounter++;
             cols++;
             rows++;
         }
         public void MoreDetails()
         {
+            buttoncounter = 0;
             FlightsGrid.Children.Clear();
             FlightsGrid.RowDefinitions.Clear();
             FlightsGrid.ColumnDefinitions.Clear();
-            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(35, GridUnitType.Pixel) });
-            for (int i = 0; i < FlightRoutes.Count; i++)
+            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
+            FlightsGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
+            for (int i = 0; i < FlightRoutes.Count+1; i++)
             {
                 FlightsGrid.RowDefinitions.Add(new RowDefinition());
                 FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
@@ -256,22 +261,27 @@ namespace AirlinesPc
                 FlightsGrid.ColumnDefinitions[i].Width = new GridLength(130, GridUnitType.Pixel);
             }
             DetailHeader();
+            int currentdetails = 0;
             for (int i = 0; i < FlightRoutes.Count; i++)
             {
-                
                 if (i!=currentrow||i+1!=currentrow+1)
                 {
-                    Details(FlightRoutes[i], i + 1);
-                    //TODO:Push list down by two from currentrow, than insert whats in else tree
+                    Details(FlightRoutes[i], i + 1+currentdetails);
                 }
                 else
                 {
-                    HeaderGenerate(currentrow + 1);
-
-                    FlightContent(FlightRoutes[currentrow-1], currentrow + 2);
+                    MoreDetailsAddRow(FlightRoutes[currentrow-1], currentrow);
+                    i++;
+                    Details(FlightRoutes[i-1], i + 2);
+                    Details(FlightRoutes[i], i+3);
+                    currentdetails += 2;
                 }
             }
-
+        }
+        public void MoreDetailsAddRow(Flights item,int row)
+        {
+            HeaderGenerate(row + 1);
+            FlightContent(item, row+2);
         }
         public void DetailHeader()
         {
@@ -301,7 +311,6 @@ namespace AirlinesPc
             Grid.SetRow(label, 0);
             cols++;
         }
-        Button[] buttons = new Button[100];
         static readonly Brush RED = new SolidColorBrush(Color.FromRgb(127, 0, 0));
 
         int currentrow = 0;
@@ -309,10 +318,11 @@ namespace AirlinesPc
         {
             currentrow = Grid.GetRow(button);
         }
+        bool IsClicked = false;
         private void Bt_Click(object sender, RoutedEventArgs e)
         {
             GetPosition(sender as Button);
-            Button currentButton = buttons[currentrow];
+            Button currentButton = buttons[currentrow-1];
             MoreDetails();
         }
         public void ListAllFlights()
@@ -320,7 +330,7 @@ namespace AirlinesPc
             FlightsGrid.Children.Clear();
             FlightsGrid.RowDefinitions.Clear();
             FlightsGrid.ColumnDefinitions.Clear();
-            for (int i = 0; i < FlightRoutes.Count; i++)
+            for (int i = 0; i < FlightRoutes.Count+1; i++)
             {
                 FlightsGrid.RowDefinitions.Add(new RowDefinition());
                 FlightsGrid.RowDefinitions[i].Height = new GridLength(50,GridUnitType.Pixel);
