@@ -3,7 +3,7 @@ using System.Collections;
 using System.Diagnostics.Metrics;
 using System.Xml.Linq;
 
-namespace AirlinesApi
+namespace Database
 {
     public class City : JsonConverter
     {
@@ -21,6 +21,14 @@ namespace AirlinesApi
             this.Flights = flights;
 
         }
+
+        
+        public City()
+        {
+            
+
+        }
+        
 
 
         public void Modify(City city)

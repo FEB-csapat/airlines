@@ -1,10 +1,11 @@
-﻿using AirlinesApi.Database.Model;
+﻿using Database;
+using Database.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace AirlinesApi.Controllers
 {
-
+    /*
     [Route("airlines/")]
     [ApiController]
     public class AirlinesController : ControllerBase
@@ -84,5 +85,5 @@ namespace AirlinesApi.Controllers
 
 
 
-
+    */
 }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirlinesApi", "AirlinesApi\
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AirlinesDatabase", "AirlinesDatabase\AirlinesDatabase.sqlproj", "{41555DBE-830D-4169-9663-49F267AD083F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{E78BE82B-68E2-430D-BCD3-2AC6D1792625}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{41555DBE-830D-4169-9663-49F267AD083F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41555DBE-830D-4169-9663-49F267AD083F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41555DBE-830D-4169-9663-49F267AD083F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

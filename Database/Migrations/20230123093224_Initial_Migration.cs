@@ -2,12 +2,10 @@
 
 #nullable disable
 
-namespace AirlinesApi.Migrations
+namespace Database.Migrations
 {
-    /// <inheritdoc />
-    public partial class InitialCreation : Migration
+    public partial class Initial_Migration : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -17,7 +15,7 @@ namespace AirlinesApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Population = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Population = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,9 +26,8 @@ namespace AirlinesApi.Migrations
                 name: "Flights",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AirlineName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Airline22 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FromId = table.Column<int>(type: "int", nullable: true),
                     DestinationId = table.Column<int>(type: "int", nullable: true),
                     Distance = table.Column<int>(type: "int", nullable: true),
@@ -63,7 +60,6 @@ namespace AirlinesApi.Migrations
                 column: "FromId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

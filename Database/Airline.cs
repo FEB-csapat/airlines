@@ -3,8 +3,9 @@ using System.Collections;
 using System.Diagnostics.Metrics;
 using System.Xml.Linq;
 
-namespace AirlinesApi
+namespace Database
 {
+    /*
     public class Airline : JsonConverter
     {
         public int Id { get; set; }
@@ -18,6 +19,13 @@ namespace AirlinesApi
         {
             this.Name = name;
             this.Flights = flights;
+
+        }
+
+
+        public Airline()
+        {
+            
 
         }
 
@@ -56,6 +64,7 @@ namespace AirlinesApi
             return true;
         }
     }
+    */
 }
 
   

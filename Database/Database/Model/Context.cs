@@ -2,12 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 
 
-namespace AirlinesApi.Database.Model
+namespace Database.Model
 {
     public class Context : DbContext
     {
+        /*
 
-        private Context() { }
+        public Context(DbContextOptions<Context> options) : base(options)
+        {
+
+        }
+        */
+
+        
+        public Context() { }
+        
         private static Context? instance;
         public static Context Instance
         {
@@ -17,13 +26,15 @@ namespace AirlinesApi.Database.Model
                 return instance;
             }
         }
+        
+
 
 
         public DbSet<Flight> Flights { get; set; }
 
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<Airline> Airlines { get; set; }
+      //  public DbSet<Airline> Airlines { get; set; }
 
 
         // InvalidOperationException()
@@ -35,7 +46,7 @@ namespace AirlinesApi.Database.Model
         {
             SqlConnectionStringBuilder builder1 = new SqlConnectionStringBuilder();
             builder1.DataSource = "localhost, 1433";
-            builder1.InitialCatalog= "Airlines";
+            builder1.InitialCatalog= "Airlines2";
             builder1.Authentication= SqlAuthenticationMethod.SqlPassword;
             builder1.UserID = "sa";
             builder1.Password = "Database123456!";

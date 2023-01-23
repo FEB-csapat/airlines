@@ -1,4 +1,5 @@
-﻿using AirlinesApi.Database.Model;
+﻿using Database;
+using Database.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
