@@ -11,9 +11,8 @@ namespace AirlinesApi.Controllers
     public class FlightsController : ControllerBase
     {
 
-        // GET flights/5
+        // GET flights
         [HttpGet]
-
         public string Get()
         {
             return JsonSerializer.Serialize(Context.Instance.Flights.ToList());
@@ -36,11 +35,11 @@ namespace AirlinesApi.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] Flight flight)
+        public void Post([FromBody] PostPojoFlight flight)
         {
             if (flight != null)
             {
-                Context.Instance.Flights.Add(flight);
+                Context.Instance.Flights.Add(flight.toDatabaseObject());
                 Context.Instance.SaveChanges();
             }
             else
@@ -64,7 +63,6 @@ namespace AirlinesApi.Controllers
                 list[0].Modify(change);
             }
         }
-
 
         // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]

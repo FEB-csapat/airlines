@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.Metrics;
 using System.Xml.Linq;
 
@@ -7,10 +9,13 @@ namespace Database
 {
     public class City : JsonConverter
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public int Population { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Flight> Flights { get; set; }
 
         [JsonConstructor]

@@ -6,16 +6,9 @@ namespace Database.Model
 {
     public class Context : DbContext
     {
-        /*
 
-        public Context(DbContextOptions<Context> options) : base(options)
-        {
-
-        }
-        */
-
-        
         public Context() { }
+
         
         private static Context? instance;
         public static Context Instance
@@ -26,15 +19,12 @@ namespace Database.Model
                 return instance;
             }
         }
-        
-
-
 
         public DbSet<Flight> Flights { get; set; }
 
         public DbSet<City> Cities { get; set; }
 
-      //  public DbSet<Airline> Airlines { get; set; }
+        public DbSet<Airline> Airlines { get; set; }
 
 
         // InvalidOperationException()
@@ -50,6 +40,11 @@ namespace Database.Model
             builder1.Authentication= SqlAuthenticationMethod.SqlPassword;
             builder1.UserID = "sa";
             builder1.Password = "Database123456!";
+
+            
+
+            optionsBuilder.EnableSensitiveDataLogging();
+
             optionsBuilder.UseSqlServer(builder1.ConnectionString);
 
             optionsBuilder.UseSqlServer();
@@ -59,7 +54,7 @@ namespace Database.Model
         {
             modelBuilder.Entity<Flight>().HasOne(x => x.From).WithMany(x => x.Flights);
 
-           // modelBuilder.Entity<City>().HasMany(x=> x.Flights).WithOne(x => x.From);
+            modelBuilder.Entity<Airline>().HasMany(x => x.Flights).WithOne(x => x.Airline);
         }
     }
 }

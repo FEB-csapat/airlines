@@ -4,19 +4,17 @@ using Database.Model;
 
 Console.WriteLine("Hello, World!");
 
-Context context = new Context();
 
 Flight flight = new Database.Flight();
 
-flight.Airline22 = "vizair";
 
-context.Flights.Add(flight);
+Context.Instance.Flights.Add(flight);
 
-context.SaveChanges();
-
+Context.Instance.SaveChanges();
 
 
-Console.WriteLine("Flights: " + context.Flights.ToList().Count);
+
+Console.WriteLine("Flights: " + Context.Instance.Flights.ToList().Count);
 
 
 

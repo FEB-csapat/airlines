@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace AirlinesApi.Controllers
 {
-    /*
+    
     [Route("airlines/")]
     [ApiController]
     public class AirlinesController : ControllerBase
@@ -13,10 +13,9 @@ namespace AirlinesApi.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet]
-
         public string Get()
         {
-            return JsonSerializer.Serialize(Context.Instance.Cities.ToList());
+            return JsonSerializer.Serialize(Context.Instance.Airlines.ToList());
         }
 
         // GET api/<ValuesController>/5
@@ -81,9 +80,4 @@ namespace AirlinesApi.Controllers
             }
         }
     }
-
-
-
-
-    */
 }
