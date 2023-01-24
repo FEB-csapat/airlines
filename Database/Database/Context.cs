@@ -119,68 +119,80 @@ namespace Database.Database
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 11,
                     Name = "Havanna",
                     Population = 2141652
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 12,
                     Name = "Libreville",
                     Population = 797003
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 13,
                     Name = "Luxembourg",
                     Population = 132780
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 14,
                     Name = "Madrid",
                     Population = 3280782
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 15,
                     Name = "Manila",
                     Population = 1846513
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 16,
                     Name = "Mexikóváros",
                     Population = 8851080
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 17,
                     Name = "Moszkva",
                     Population = 12455682
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 18,
                     Name = "Peking",
                     Population = 21893095
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 19,
                     Name = "Pozsony",
                     Population = 475503
                 },
                 new City
                 {
-                    Id = 10,
+                    Id = 20,
                     Name = "Prága",
                     Population = 1275406
                 }
             );
             modelBuilder.Entity<Airline>().HasData(
                 new Airline { Id = 1, Name = "WizzAir" },
-                new Airline { Id = 2, Name = "RyanAir" }
+                new Airline { Id = 2, Name = "RyanAir" },
+                new Airline { Id = 3, Name = "British Airlines" },
+                new Airline { Id = 4, Name = "Air Serbia" },
+                new Airline { Id = 5, Name = "SCAT Airlines" },
+                new Airline { Id = 6, Name = "Belavia" },
+                new Airline { Id = 7, Name = "Wingo" },
+                new Airline { Id = 8, Name = "Iberia" },
+                new Airline { Id = 9, Name = "Air France" },
+                new Airline { Id = 10, Name = "Philippine Airlines" },
+                new Airline { Id = 11, Name = "Luxair" },
+                new Airline { Id = 12, Name = "Air China" },
+                new Airline { Id = 13, Name = "AVIANCA" },
+                new Airline { Id = 14, Name = "Aero4M" }
             );
 
             modelBuilder.Entity<Flight>().HasData(
