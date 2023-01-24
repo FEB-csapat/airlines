@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "vRTqanMr78+2Fr3UwdW0t2eExhmQbqoFALREQrirFzmBMJ9vWyw3FfOkhjuh3GKRCG+yWvG75b+RydyLrgfW7w==",
-  "success": false,
+  "dgSpecHash": "EUllQJ7oX3EEd5BfxMVPcFnIKdLjnd6cbKZLTEDNPLRxF8eZYDCPzGhZf3HpQNBbXj/C9HIan5fI86JqrFYvSA==",
+  "success": true,
   "projectFilePath": "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\AirlinesApi\\AirlinesApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bence-PC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
@@ -64,15 +64,6 @@
     "C:\\Users\\Bence-PC\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\Database\\Database.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "C:\\Users\\Bence-PC\\Desktop\\Új mappa (3)\\airlines\\Database\\Database.csproj",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",
