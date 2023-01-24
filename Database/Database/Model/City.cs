@@ -1,46 +1,33 @@
 ﻿using Newtonsoft.Json;
-using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.Metrics;
-using System.Xml.Linq;
 
-namespace Database
+namespace Database.Database.Model
 {
     public class City : JsonConverter
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public int Population { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<Flight> Flights { get; set; }
-
         [JsonConstructor]
-        public City(string name, int population, ICollection<Flight> flights)
+        public City(string name, int population)
         {
-            this.Name = name;
-            this.Population = population;
-            this.Flights = flights;
-
+            Name = name;
+            Population = population;
         }
 
-        
         public City()
         {
-            
 
         }
-        
-
 
         public void Modify(City city)
         {
-            this.Name = city.Name;
-            this.Population = city.Population;
-            this.Flights = city.Flights;
+            Name = city.Name;
+            Population = city.Population;
         }
 
 
@@ -73,4 +60,3 @@ namespace Database
     }
 }
 
-  

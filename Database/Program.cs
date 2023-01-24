@@ -1,11 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Database;
-using Database.Model;
+using Database.Database;
+using Database.Database.Model;
 
 Console.WriteLine("Hello, World!");
 
 
-Flight flight = new Database.Flight();
+Flight flight = new Flight();
 
 
 Context.Instance.Flights.Add(flight);

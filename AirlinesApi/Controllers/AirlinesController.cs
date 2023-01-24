@@ -1,11 +1,14 @@
-﻿using Database;
-using Database.Model;
+﻿using Database.Database;
+using Database.Database.Model;
+using Database.Database.Model.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using System.Text.Json;
+
 
 namespace AirlinesApi.Controllers
 {
-    
+
     [Route("airlines/")]
     [ApiController]
     public class AirlinesController : ControllerBase
@@ -22,29 +25,28 @@ namespace AirlinesApi.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            List<Airline> list = Context.Instance.Airlines.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
+            Airline? result = Context.Instance.Airlines.SingleOrDefault(x => x.Id == id);
+
+            if (result != null)
             {
-                return null;
+                return result.ToJson();
             }
-            else
-            {
-                return list[0].ToJson() ?? "null";
-            }
+            return "null";
         }
 
         // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] Airline airline)
+        public void Post([FromBody] ViewModelAirline airline)
         {
             if (airline != null)
             {
-                Context.Instance.Airlines.Add(airline);
+                Airline airline2 = new Airline(airline.Name);
+
+                Context.Instance.Airlines.Add(airline2);
                 Context.Instance.SaveChanges();
             }
             else
             {
-                Console.WriteLine("Something went wrong");
             }
 
         }
@@ -52,16 +54,15 @@ namespace AirlinesApi.Controllers
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Airline change)
+        public void Put(int id, [FromBody] ViewModelAirline change)
         {
-            List<Airline> list = Context.Instance.Airlines.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
+
+            Airline? result = Context.Instance.Airlines.SingleOrDefault(x => x.Id == id);
+            if (result != null)
             {
-                
-            }
-            else
-            {
-                list[0].Modify(change);
+                result.Modify(change);
+                Context.Instance.Update(result);
+                Context.Instance.SaveChanges();
             }
         }
 
@@ -69,15 +70,16 @@ namespace AirlinesApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (Airline airline in Context.Instance.Airlines)
-            {
-                if (airline.Id == id)
-                {
+            Airline? result = Context.Instance.Airlines.SingleOrDefault(x => x.Id == id);
 
-                    Context.Instance.Airlines.Remove(airline);
-                    return;
-                }
+            if (result != null)
+            {
+                Context.Instance.Airlines.Remove(result);
+                Context.Instance.SaveChanges();
             }
+            
+
+            // throw new System.Web.Http.HttpResponseException(HttpStatusCode.NotFound);
         }
     }
 }

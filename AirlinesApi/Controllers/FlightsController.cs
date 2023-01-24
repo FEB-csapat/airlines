@@ -1,81 +1,74 @@
-﻿using Database;
-using Database.Model;
+﻿using Database.Database;
+using Database.Database.Model;
+using Database.Database.Model.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace AirlinesApi.Controllers
 {
-
     [Route("flights/")]
     [ApiController]
     public class FlightsController : ControllerBase
     {
-
-        // GET flights
         [HttpGet]
         public string Get()
         {
             return JsonSerializer.Serialize(Context.Instance.Flights.ToList());
         }
 
-        // GET api/<ValuesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            List<Flight> list = Context.Instance.Flights.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
+            Flight? result = Context.Instance.Flights.SingleOrDefault(x => x.Id == id);
+
+            if (result != null)
             {
-                return null;
+                return result.ToJson();
             }
-            else
-            {
-                return list[0].ToJson() ?? "null";
-            }
+            return "null";
         }
 
-        // POST api/<ValuesController>
         [HttpPost]
-        public void Post([FromBody] PostPojoFlight flight)
+        public void Post([FromBody] FlightViewModel flight)
         {
             if (flight != null)
             {
-                Context.Instance.Flights.Add(flight.toDatabaseObject());
+                Flight real = new Flight();
+
+                real.From = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.FromId);
+                real.Destination = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.DestinationId);
+                real.Airline = Context.Instance.Airlines.SingleOrDefault(x => x.Id == flight.AirlineId);
+                real.Distance = flight.Distance;
+                real.KmPrice = flight.KmPrice;
+                real.FlightDuration = flight.FlightDuration;
+
+                Context.Instance.Flights.Add(real);
                 Context.Instance.SaveChanges();
             }
-            else
-            {
-                Console.WriteLine("Something went wrong");
-            }
-
         }
 
-        // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Flight change)
+        public void Put(int id, [FromBody] FlightViewModel change)
         {
-            List<Flight> list = Context.Instance.Flights.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
-            {
+            Flight? result = Context.Instance.Flights.SingleOrDefault(x => x.Id == id);
 
-            }
-            else
+            if (result != null)
             {
-                list[0].Modify(change);
+                result.Modify(change);
+                Context.Instance.Update(result);
+                Context.Instance.SaveChanges();
             }
         }
 
-        // DELETE api/<ValuesController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (Flight flight in Context.Instance.Flights)
-            {
-                if (flight.Id == id)
-                {
+            Flight? result = Context.Instance.Flights.SingleOrDefault(x => x.Id == id);
 
-                    Context.Instance.Flights.Remove(flight);
-                    return;
-                }
+            if (result != null)
+            {
+                Context.Instance.Flights.Remove(result);
+                Context.Instance.SaveChanges();
             }
         }
     }

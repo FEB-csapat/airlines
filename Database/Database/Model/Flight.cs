@@ -1,30 +1,26 @@
-﻿using Newtonsoft.Json;
+﻿using Database.Database.Model.ViewModel;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Database
+namespace Database.Database.Model
 {
     public class Flight : JsonConverter
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; private set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [ForeignKey("AirlineId")]
         public virtual Airline? Airline { get; set; }
-
-        [JsonIgnore]
         public int? AirlineId { get; set; }
 
         [ForeignKey("FromId")]
         public virtual City? From { get; set; }
-        [JsonIgnore]
         public int? FromId { get; set; }
 
         [ForeignKey("DestinationId")]
-        
         public virtual City? Destination { get; set; }
-        [JsonIgnore]
         public int? DestinationId { get; set; }
 
         public int? Distance { get; set; }
@@ -32,50 +28,31 @@ namespace Database
         public int? FlightDuration { get; set; }
         public int? KmPrice { get; set; }
 
-        public Flight(string line)
-        {
-            string[] l = line.Split(';');
-        }
 
         [JsonConstructor]
         public Flight(Airline airline, City from, City destination, int distance, int flightDuration, int kmPrice)
         {
-            this.Airline = airline;
-            this.From = from;
-            this.Destination = destination;
-            this.Distance = distance;
-            this.FlightDuration = flightDuration;
-            this.KmPrice = kmPrice;
+            Airline = airline;
+            From = from;
+            Destination = destination;
+            Distance = distance;
+            FlightDuration = flightDuration;
+            KmPrice = kmPrice;
         }
-
-        /*
-        public static Flight FromPojo (PostPojoFlight postPojoFlight)
-        {
-            
-        }
-        */
-        
-
 
         public Flight()
         {
-            
-        }
-        
 
-        public void Modify(Flight flight)
-        {
-            this.Airline = flight.Airline;
-            this.From = flight.From;
-            this.Destination = flight.Destination;
-            this.Distance = flight.Distance;
-            this.FlightDuration = flight.FlightDuration;
-            this.KmPrice = flight.KmPrice;
         }
 
-        public void CopyAttributes(Flight otherSweets)
+        public void Modify(FlightViewModel flight)
         {
-            
+            From = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.FromId);
+            Destination = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.DestinationId);
+            Airline = Context.Instance.Airlines.SingleOrDefault(x => x.Id == flight.AirlineId);
+            Distance = flight.Distance;
+            KmPrice = flight.KmPrice;
+            FlightDuration = flight.FlightDuration;
         }
 
         public string ToJson()
@@ -87,8 +64,6 @@ namespace Database
         {
             return JsonConvert.DeserializeObject<Flight>(json);
         }
-
-
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {

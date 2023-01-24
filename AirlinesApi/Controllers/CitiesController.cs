@@ -1,5 +1,5 @@
-﻿using Database;
-using Database.Model;
+﻿using Database.Database;
+using Database.Database.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -22,14 +22,14 @@ namespace AirlinesApi.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            List<City> list = Context.Instance.Cities.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
+            City? result = Context.Instance.Cities.SingleOrDefault(x => x.Id == id);
+            if (result != null)
             {
-                return null;
+                return result.ToJson();
             }
             else
             {
-                return list[0].ToJson() ?? "null";
+                return "null";
             }
         }
 
@@ -54,17 +54,15 @@ namespace AirlinesApi.Controllers
         {
             if (city != null)
             {
-                Context context = new Context();
                 /*
                  Context.Instance.Cities.Add(city);
                 Context.Instance.SaveChanges();
                  */
-                context.Cities.Add(city);
-                context.SaveChanges();
+                Context.Instance.Cities.Add(city);
+                Context.Instance.SaveChanges();
             }
             else
             {
-                Console.WriteLine("Something went wrong");
             }
 
         }
@@ -73,14 +71,12 @@ namespace AirlinesApi.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] City change)
         {
-            List<City> list = Context.Instance.Cities.Where(x => x.Id == id).ToList();
-            if (list.Count == 0)
+            City? result = Context.Instance.Cities.SingleOrDefault(x => x.Id == id);
+            if (result != null)
             {
-
-            }
-            else
-            {
-                list[0].Modify(change);
+                result.Modify(change);
+                Context.Instance.Update(result);
+                Context.Instance.SaveChanges();
             }
         }
 
@@ -88,14 +84,12 @@ namespace AirlinesApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            foreach (City city in Context.Instance.Cities)
-            {
-                if (city.Id == id)
-                {
+            City? result = Context.Instance.Cities.SingleOrDefault(x => x.Id == id);
 
-                    Context.Instance.Cities.Remove(city);
-                    return;
-                }
+            if (result != null)
+            {
+                Context.Instance.Cities.Remove(result);
+                Context.Instance.SaveChanges();
             }
         }
     }

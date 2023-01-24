@@ -1,45 +1,47 @@
-﻿using Newtonsoft.Json;
+﻿using Database.Database.Model.ViewModel;
+using Newtonsoft.Json;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.Metrics;
+using System.Xml.Linq;
 
-namespace Database
+namespace Database.Database.Model
 {
-    public class FlightViewModel : JsonConverter
+    public class Airline : JsonConverter
     {
-        public int Id { get; private set; }
-
-        public int? Distance { get; set; }
-
-        public int? FlightDuration { get; set; }
-        public int? KmPrice { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         [JsonConstructor]
-        public FlightViewModel(int distance, int flightDuration, int kmPrice)
+        public Airline(string name)
         {
-            this.Distance = distance;
-            this.FlightDuration = flightDuration;
-            this.KmPrice = kmPrice;
+            Name = name;
         }
 
-
-        
-
-        public void CopyAttributes(Flight otherSweets)
+        public Airline()
         {
 
         }
+
+        public void Modify(ViewModelAirline airline)
+        {
+            Name = airline.Name;
+        }
+
+
 
         public string ToJson()
         {
             return JsonConvert.SerializeObject(this);
         }
 
-        public static Flight? FromJson(string json)
+        public static Airline? FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<Flight>(json);
+            return JsonConvert.DeserializeObject<Airline>(json);
         }
-
-
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
@@ -56,4 +58,6 @@ namespace Database
             return true;
         }
     }
+
 }
+

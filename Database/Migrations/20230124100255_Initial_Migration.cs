@@ -9,6 +9,19 @@ namespace Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Airlines",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Airlines", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -26,8 +39,9 @@ namespace Database.Migrations
                 name: "Flights",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Airline22 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AirlineId = table.Column<int>(type: "int", nullable: true),
                     FromId = table.Column<int>(type: "int", nullable: true),
                     DestinationId = table.Column<int>(type: "int", nullable: true),
                     Distance = table.Column<int>(type: "int", nullable: true),
@@ -37,6 +51,11 @@ namespace Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Flights", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Flights_Airlines_AirlineId",
+                        column: x => x.AirlineId,
+                        principalTable: "Airlines",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Flights_Cities_DestinationId",
                         column: x => x.DestinationId,
@@ -48,6 +67,11 @@ namespace Database.Migrations
                         principalTable: "Cities",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flights_AirlineId",
+                table: "Flights",
+                column: "AirlineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Flights_DestinationId",
@@ -64,6 +88,9 @@ namespace Database.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Flights");
+
+            migrationBuilder.DropTable(
+                name: "Airlines");
 
             migrationBuilder.DropTable(
                 name: "Cities");
