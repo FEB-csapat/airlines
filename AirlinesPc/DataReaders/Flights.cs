@@ -8,6 +8,15 @@ namespace AirlinesPc.DataReaders
 {
     public class Flights
     {
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Flights FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<Flights>(json);
+        }
         public string AirlineName { get; private set; }
         public string StartCity { get; private set; }
         public string TargetCity { get; private set; }
