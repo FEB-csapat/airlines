@@ -8,7 +8,7 @@ namespace Database.Database
 {
     public class Context : DbContext
     {
-        private Context() { }
+        public Context() { }
 
         private static Context? instance;
         public static Context Instance
@@ -219,7 +219,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 3,
                     AirlineId = 4,
                     FromId = 1,
                     DestinationId = 8,
@@ -229,7 +229,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 4,
                     AirlineId = 4,
                     FromId = 8,
                     DestinationId = 3,
@@ -239,7 +239,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 5,
                     AirlineId = 3,
                     FromId = 2,
                     DestinationId = 14,
@@ -249,7 +249,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 6,
                     AirlineId = 3,
                     FromId = 14,
                     DestinationId = 2,
@@ -259,7 +259,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 7,
                     AirlineId = 5,
                     FromId = 6,
                     DestinationId = 17,
@@ -269,7 +269,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 8,
                     AirlineId = 5,
                     FromId = 17,
                     DestinationId = 6,
@@ -279,7 +279,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 9,
                     AirlineId = 6,
                     FromId = 6,
                     DestinationId = 5,
@@ -289,7 +289,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 10,
                     AirlineId = 6,
                     FromId = 5,
                     DestinationId = 6,
@@ -299,7 +299,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 11,
                     AirlineId = 7,
                     FromId = 9,
                     DestinationId = 11,
@@ -309,7 +309,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 12,
                     AirlineId = 7,
                     FromId = 11,
                     DestinationId = 9,
@@ -319,7 +319,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 13,
                     AirlineId = 8,
                     FromId = 10,
                     DestinationId = 14,
@@ -329,7 +329,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 14,
                     AirlineId = 8,
                     FromId = 14,
                     DestinationId = 10,
@@ -339,7 +339,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 15,
                     AirlineId = 9,
                     FromId = 7,
                     DestinationId = 12,
@@ -349,7 +349,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 16,
                     AirlineId = 15,
                     FromId = 11,
                     DestinationId = 16,
@@ -359,7 +359,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 17,
                     AirlineId = 2,
                     FromId = 20,
                     DestinationId = 1,
@@ -369,7 +369,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 18,
                     AirlineId = 2,
                     FromId = 1,
                     DestinationId = 20,
@@ -379,7 +379,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 19,
                     AirlineId = 6,
                     FromId = 17,
                     DestinationId = 5,
@@ -389,7 +389,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 20,
                     AirlineId = 15,
                     FromId = 4,
                     DestinationId = 16,
@@ -399,7 +399,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 21,
                     AirlineId = 15,
                     FromId = 16,
                     DestinationId = 4,
@@ -409,7 +409,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 22,
                     AirlineId = 10,
                     FromId = 15,
                     DestinationId = 18,
@@ -419,7 +419,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 23,
                     AirlineId = 1,
                     FromId = 3,
                     DestinationId = 2,
@@ -429,7 +429,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 24,
                     AirlineId = 1,
                     FromId = 2,
                     DestinationId = 3,
@@ -439,7 +439,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 25,
                     AirlineId = 11,
                     FromId = 10,
                     DestinationId = 13,
@@ -449,7 +449,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 26,
                     AirlineId = 9,
                     FromId = 1,
                     DestinationId = 7,
@@ -459,7 +459,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 27,
                     AirlineId = 9,
                     FromId = 7,
                     DestinationId = 1,
@@ -469,7 +469,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 28,
                     AirlineId = 1,
                     FromId = 1,
                     DestinationId = 6,
@@ -479,7 +479,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 29,
                     AirlineId = 1,
                     FromId = 6,
                     DestinationId = 1,
@@ -489,7 +489,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 30,
                     AirlineId = 11,
                     FromId = 1,
                     DestinationId = 13,
@@ -499,7 +499,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 31,
                     AirlineId = 11,
                     FromId = 13,
                     DestinationId = 1,
@@ -509,7 +509,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 32,
                     AirlineId = 2,
                     FromId = 1,
                     DestinationId = 14,
@@ -519,7 +519,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 33,
                     AirlineId = 2,
                     FromId = 14,
                     DestinationId = 1,
@@ -529,7 +529,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 34,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 1,
@@ -539,7 +539,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 35,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 2,
@@ -549,7 +549,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 36,
                     AirlineId = 12,
                     FromId = 2,
                     DestinationId = 18,
@@ -559,7 +559,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 37,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 5,
@@ -569,7 +569,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 38,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 7,
@@ -579,7 +579,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 39,
                     AirlineId = 12,
                     FromId = 7,
                     DestinationId = 18,
@@ -589,7 +589,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 40,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 14,
@@ -599,7 +599,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 41,
                     AirlineId = 13,
                     FromId = 2,
                     DestinationId = 9,
@@ -609,7 +609,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 42,
                     AirlineId = 13,
                     FromId = 9,
                     DestinationId = 2,
@@ -619,7 +619,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 43,
                     AirlineId = 9,
                     FromId = 2,
                     DestinationId = 7,
@@ -629,7 +629,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 44,
                     AirlineId = 9,
                     FromId = 7,
                     DestinationId = 2,
@@ -639,7 +639,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 45,
                     AirlineId = 3,
                     FromId = 2,
                     DestinationId = 19,
@@ -649,7 +649,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 46,
                     AirlineId = 3,
                     FromId = 19,
                     DestinationId = 2,
@@ -659,7 +659,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 47,
                     AirlineId = 12,
                     FromId = 18,
                     DestinationId = 19,
@@ -669,7 +669,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 48,
                     AirlineId = 12,
                     FromId = 19,
                     DestinationId = 18,
@@ -679,7 +679,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 49,
                     AirlineId = 14,
                     FromId = 19,
                     DestinationId = 9,
@@ -689,7 +689,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 50,
                     AirlineId = 14,
                     FromId = 9,
                     DestinationId = 19,
@@ -699,7 +699,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 51,
                     AirlineId = 1,
                     FromId = 3,
                     DestinationId = 12,
@@ -709,7 +709,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 52,
                     AirlineId = 1,
                     FromId = 12,
                     DestinationId = 3,
@@ -719,7 +719,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 53,
                     AirlineId = 15,
                     FromId = 9,
                     DestinationId = 16,
@@ -729,7 +729,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 54,
                     AirlineId = 15,
                     FromId = 16,
                     DestinationId = 9,
@@ -739,7 +739,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 55,
                     AirlineId = 2,
                     FromId = 20,
                     DestinationId = 10,
@@ -749,7 +749,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 56,
                     AirlineId = 2,
                     FromId = 10,
                     DestinationId = 20,
@@ -759,7 +759,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 57,
                     AirlineId = 10,
                     FromId = 15,
                     DestinationId = 4,
@@ -769,7 +769,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 58,
                     AirlineId = 10,
                     FromId = 4,
                     DestinationId = 15,
@@ -779,7 +779,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 59,
                     AirlineId = 2,
                     FromId = 8,
                     DestinationId = 20,
@@ -789,7 +789,7 @@ namespace Database.Database
                 },
                 new Flight
                 {
-                    Id = 1,
+                    Id = 60,
                     AirlineId = 2,
                     FromId = 20,
                     DestinationId = 8,
