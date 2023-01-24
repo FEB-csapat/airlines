@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesPc", "AirlinesPc\AirlinesPc.csproj", "{942B6A89-073F-4FDE-BC86-3C1CA3C6DD84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirlinesPc", "AirlinesPc\AirlinesPc.csproj", "{942B6A89-073F-4FDE-BC86-3C1CA3C6DD84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesApi", "AirlinesApi\AirlinesApi.csproj", "{BC71EEA0-A579-443E-8D6C-20E16BC5E7D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirlinesApi", "AirlinesApi\AirlinesApi.csproj", "{BC71EEA0-A579-443E-8D6C-20E16BC5E7D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{E78BE82B-68E2-430D-BCD3-2AC6D1792625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseTests", "DatabaseTests\DatabaseTests.csproj", "{E3306092-7C89-4B5F-93FE-AD2AC6C207FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlinesApiTests", "AirlinesApiTests\AirlinesApiTests.csproj", "{0BD84A8C-1B77-4479-AD43-8A575FBC3D47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{BC71EEA0-A579-443E-8D6C-20E16BC5E7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC71EEA0-A579-443E-8D6C-20E16BC5E7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC71EEA0-A579-443E-8D6C-20E16BC5E7D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78BE82B-68E2-430D-BCD3-2AC6D1792625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3306092-7C89-4B5F-93FE-AD2AC6C207FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3306092-7C89-4B5F-93FE-AD2AC6C207FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3306092-7C89-4B5F-93FE-AD2AC6C207FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3306092-7C89-4B5F-93FE-AD2AC6C207FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BD84A8C-1B77-4479-AD43-8A575FBC3D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BD84A8C-1B77-4479-AD43-8A575FBC3D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BD84A8C-1B77-4479-AD43-8A575FBC3D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BD84A8C-1B77-4479-AD43-8A575FBC3D47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
