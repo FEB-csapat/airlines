@@ -31,16 +31,16 @@ namespace AirlinesPc
         }
         public void ApiReader()
         {
-            //foreach (var item in File.ReadAllLines("CityPopulation.csv",Encoding.Default))
-            //{
-            //    helper = new CityPopulation(item);
-            //    Cities.Add(helper);
-            //    StartingCities.Add(helper.CityName);
-            //}
-            //foreach (var item in File.ReadLines("Flights.csv",Encoding.Default).Skip(1))
-            //{
-            //    FlightRoutes.Add(new Flights(item));
-            //}
+            foreach (var item in File.ReadAllLines("CityPopulation.csv", Encoding.Default))
+            {
+                helper = new CityPopulation(item);
+                Cities.Add(helper);
+                StartingCities.Add(helper.CityName);
+            }
+            foreach (var item in File.ReadLines("Flights.csv", Encoding.Default).Skip(1))
+            {
+                FlightRoutes.Add(new Flights(item));
+            }
             RestAPIManager retapimanager = new RestAPIManager("https://localhost:7245/");
             StartingCities = StartingCities.OrderBy(x => x).ToList();
             TargetCities = StartingCities;
