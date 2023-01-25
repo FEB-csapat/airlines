@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <table-row v-for="flight in flights" :key="flight.id" :id="flight.id" :tarsasag="flight.Airline" :kiindulas="flight.From" :celvaros="flight.Destination" :tavolas="flight.Distance" :idotartam="flight.Flightduration" :kmar="flight.KmPrice" @add-to-cart="AddToCart" ></table-row>
+        <table-row v-for="flight in flights" :key="flight.Id" :id="flight.Id" :tarsasag="flight.Airline.Name" :kiindulas="flight.From.Name" :celvaros="flight.Destination.Name" :tavolas="flight.Distance" :idotartam="flight.FlightDuration" :kmar="flight.KmPrice" @add-to-cart="AddToCart" ></table-row>
     </tbody>
 </table>
 </template>

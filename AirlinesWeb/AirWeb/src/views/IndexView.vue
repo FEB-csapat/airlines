@@ -15,7 +15,7 @@ export default{
     data(){
         return{
             flights: [
-                {
+              /*  {
                     id:0,
                     Airline: "wizz",
                     From: "amerika",
@@ -26,7 +26,7 @@ export default{
 
                 },
                 {
-                    id:1,
+                    Id:1,
                     Airline: "luft",
                     From: "kongo",
                     Destination: "madrid",
@@ -34,12 +34,22 @@ export default{
                     FlightDuration: 60,
                     KmPrice:1
                 }
+
+                */
             ]
         }
     },
     methods:{
         async dataFetch(){
-            const resp = await fetch();
+            const headers = {'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'}
+
+            const resp = await fetch('https://localhost:5000/flights/2',
+            {
+                method: 'GET',
+                headers: headers
+            });
             this.flights = await resp.json();
         }
     },
