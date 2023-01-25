@@ -1,6 +1,10 @@
 <template>
 <div class="container">
-    <div class="bg-primary w-100">Menetrend kereső</div>
+    <div class="bg-success m-2 w-100 rounded-3 p-2 text-center ">
+        <h1>
+            Menetrend kereső
+        </h1>
+    </div>
     <flight-table :flights="flights"></flight-table>
 </div>
 </template>
@@ -48,3 +52,11 @@ export default{
     }
     }
 </script>
+
+<style>
+    body{
+        background: url('../img/airport.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>

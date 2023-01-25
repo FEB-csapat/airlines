@@ -1,11 +1,20 @@
 <template>
-<h1 class="text-center">A jegyek végösszege: {{ossz}}</h1>
-<table class="table table-striped">
-    <thead>
+    <div class="container">
+        <div class="bg-success m-2 w-100 rounded-3 p-2 text-center ">
+            <h1 class="text-center">
+             A jegyek végösszege: {{ossz}}
+            </h1>
+        </div>
+    
+<table class="table table-striped m-2 text-center">
+    <thead class="bg-success bg-opacity">
+        <tr>
         <th>Társaság:</th>
         <th>Kiinduló város:</th>
         <th>Cél város:</th>
         <th>Jegy(ek) ára (  {{ db }} darab )</th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
         <tr v-for="item in cart" :key="item.id">
@@ -17,6 +26,8 @@
         </tr>
     </tbody>
 </table>
+
+</div>
 </template>
 <script>
 

@@ -1,6 +1,6 @@
 <template>
-<table class="table table-striped">
-    <thead>
+<table class="table table-striped m-2 text-center">
+    <thead class="bg-success bg-opacity ">
         <tr>
             <th>Légitársaság</th>
             <th>Kiinduló város</th>
@@ -8,6 +8,7 @@
             <th>Távolság (km)</th>
             <th>Repülési időtartam</th>
             <th>Kilométer ár</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,3 +40,6 @@ export default{
     }
 }
 </script>
+<style>
+
+</style>
