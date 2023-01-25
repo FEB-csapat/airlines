@@ -1,8 +1,6 @@
 ﻿using Database.Database.Model;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using System.Xml.Linq;
-
 
 namespace Database.Database
 {
@@ -53,9 +51,9 @@ namespace Database.Database
             Seed(modelBuilder);
         }
 
-
         private void Seed(ModelBuilder modelBuilder)
         {
+            #region Seed City
             modelBuilder.Entity<City>().HasData(
                 new City
                 {
@@ -178,6 +176,9 @@ namespace Database.Database
                     Population = 1275406
                 }
             );
+            #endregion
+
+            #region Seed Airline
             modelBuilder.Entity<Airline>().HasData(
                 new Airline { Id = 1, Name = "WizzAir" },
                 new Airline { Id = 2, Name = "RyanAir" },
@@ -195,7 +196,9 @@ namespace Database.Database
                 new Airline { Id = 14, Name = "Aero4M" },
                 new Airline { Id = 15, Name = "Aeromexico" }
             );
+            #endregion
 
+            #region Seed Flight
             modelBuilder.Entity<Flight>().HasData(
                 new Flight
                 {
@@ -798,6 +801,7 @@ namespace Database.Database
                     KmPrice =10
                 }
             );
+            #endregion
         }
     }
 }
