@@ -23,7 +23,7 @@ namespace AirlinesApi.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string? Get(int id)
         {
             Airline? result = Context.Instance.Airlines.SingleOrDefault(x => x.Id == id);
 
@@ -31,7 +31,7 @@ namespace AirlinesApi.Controllers
             {
                 return result.ToJson();
             }
-            return "null";
+            return null;
         }
 
         // POST api/<ValuesController>

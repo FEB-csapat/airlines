@@ -15,6 +15,7 @@ export default{
     data(){
         return{
             flights: [
+                /*
                 {
                     id:0,
                     Airline: "wizz",
@@ -23,7 +24,6 @@ export default{
                     Distance: 50,
                     FlightDuration: 60,
                     KmPrice:2
-
                 },
                 {
                     id:1,
@@ -34,12 +34,25 @@ export default{
                     FlightDuration: 60,
                     KmPrice:1
                 }
+                */
             ]
         }
     },
     methods:{
         async dataFetch(){
+            /*
             const resp = await fetch();
+            this.flights = await resp.json();
+            */
+
+            const headers = {'Content-Type':'application/json',
+                    'Access-Control-Allow-Origin':'*',
+                    'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'}
+            const resp = await fetch('https://localhost:5000/flights/2',
+            {
+                method: 'GET',
+                headers: headers
+            });
             this.flights = await resp.json();
         }
     },
