@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\AirlinesApi\\AirlinesApi.csproj": {}
+    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\AirlinesApi\\AirlinesApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\AirlinesApi\\AirlinesApi.csproj": {
+    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\AirlinesApi\\AirlinesApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\AirlinesApi\\AirlinesApi.csproj",
+        "projectUniqueName": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\AirlinesApi\\AirlinesApi.csproj",
         "projectName": "AirlinesApi",
-        "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\AirlinesApi\\AirlinesApi.csproj",
+        "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\AirlinesApi\\AirlinesApi.csproj",
         "packagesPath": "C:\\Users\\isako\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\AirlinesApi\\obj\\",
+        "outputPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\AirlinesApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\Database.csproj": {
-                "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\Database.csproj"
+              "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\Database.csproj": {
+                "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\Database.csproj"
               }
             }
           }
@@ -52,6 +52,10 @@
             "Microsoft.AspNet.WebApi": {
               "target": "Package",
               "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
@@ -107,14 +111,14 @@
         }
       }
     },
-    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\Database.csproj": {
+    "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\Database.csproj",
+        "projectUniqueName": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\Database.csproj",
         "projectName": "Database",
-        "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\Database.csproj",
+        "projectPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\Database.csproj",
         "packagesPath": "C:\\Users\\isako\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 2\\airlines\\Database\\obj\\",
+        "outputPath": "C:\\Users\\isako\\OneDrive\\Desktop\\Technikum\\team_projects\\FEB\\Airlines\\airlines 3\\airlines\\Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -151,6 +155,10 @@
             "Microsoft.AspNet.WebApi": {
               "target": "Package",
               "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
