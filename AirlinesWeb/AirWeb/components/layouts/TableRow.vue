@@ -6,11 +6,11 @@
     <td>{{tavolsag}}</td>
     <td>{{idotartam}}</td>
     <td>{{kmar}}</td>
-    <td><button class="btn btn-success" @click="$emit('addToCart',id)">asd</button></td>
+
+    <td><button class="btn btn-success" @click="$emit('AddToCart',id)">Kosárba teszem</button></td>
 </tr>
 </template>
 <script>
-import { RouterLink } from 'vue-router';
 export default{
     props:{
         id: Number,
@@ -20,6 +20,7 @@ export default{
         tavolsag: Number,
         idotartam: Number,
         kmar: Number
-    }
+    },
+    emits: ['AddToCart']
 }
 </script>

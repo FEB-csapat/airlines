@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import { advancePositionWithClone } from '@vue/compiler-core';
 import FlightTable from '../../components/layouts/Table.vue';
 export default{
+    name: "IndexView",
     components:{
         FlightTable
     },
@@ -34,8 +34,7 @@ export default{
                     FlightDuration: 60,
                     KmPrice:1
                 }
-            ],
-            cart:[]
+            ]
         }
     },
     methods:{

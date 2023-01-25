@@ -32,7 +32,9 @@ export default{
     methods:{
         AddToCart(id){
             const item = this.flights.find(item=>item.id === id );
-            console.log(item.From);
+            alert('Sikeres kosárba tétel!');
+            this.cart.push(item);
+            localStorage.setItem('cart',JSON.stringify(this.cart));
         }
     }
 }
