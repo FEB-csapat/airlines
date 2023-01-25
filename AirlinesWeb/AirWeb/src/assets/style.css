@@ -1,0 +1,26 @@
+.table-striped > tbody > tr:nth-child(odd) > td{
+    background-color: rgba(255, 153, 0, 0.658);
+ }
+ .table-striped > tbody > tr:nth-child(even) > td {
+     background-color: rgba(150, 150, 150, 0.61);
+ }
+ .table-striped thead th:first-child {
+     border-radius: 10px 0 0 0;
+ }
+ .table-striped thead th:last-child {
+     border-radius: 0 10px 0 0;
+ }
+ .table-striped thead th {
+ 
+     text-shadow: 0.3px 0.5px 0.3px #ccc;
+ }
+ .table{
+     font-size: 20px; 
+     text-shadow: 0.5px 0.5px 1px #ccc;
+ }
+ .table-striped tbody>tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+.table-striped tbody>tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
