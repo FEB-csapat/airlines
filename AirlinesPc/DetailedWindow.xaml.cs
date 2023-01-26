@@ -1,4 +1,5 @@
 ﻿using AirlinesPc.DataReaders;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,16 +9,25 @@ namespace AirlinesPc
     /// Interaction logic for DetailedWindow.xaml
     /// </summary>
     public partial class DetailedWindow : Window
-    { 
+    {
+
         Flights towrite;
+        private int[] db = new int[20];
+        public int[] Jegydb
+        {
+            get { return db; }
+            set { db = value; }
+        }
         public DetailedWindow(Flights item)
         {
+            this.DataContext = this;
             towrite = item;
+            for (int i = 0; i < 20; i++)
+            {
+                db[i] = i+1;
+            }
             InitializeComponent();
             DetailData();
-        }
-        public DetailedWindow()
-        {
         }
         public void DetailData()
         {
@@ -82,6 +92,24 @@ namespace AirlinesPc
         {
             DetailGrid.Children.Clear();
             this.Close();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int alapdij;
+            int utasszam = int.Parse(Cutasszam.SelectedValue.ToString());
+            alapdij = towrite.TravelDistance * towrite.KmPrice*utasszam;
+            Lalapdij.Content = alapdij + " Ft";
+
+            double bruttodij = alapdij*1.27;
+
+            
+            bruttodij += (towrite.TravelDistance * 0.1) * towrite.KmPrice;
+            if ( utasszam > 10)
+            {
+                bruttodij = bruttodij * 0.9;
+            }
+            Lbruttodij.Content = bruttodij + " Ft";
         }
     }
 }
