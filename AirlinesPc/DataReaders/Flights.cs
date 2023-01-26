@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,7 @@ namespace AirlinesPc.DataReaders
         {
             return JsonConvert.SerializeObject(this);
         }
-
-        public static Flights FromJson(string json)
+        public static Flights? FromJson(string json)
         {
             return JsonConvert.DeserializeObject<Flights>(json);
         }

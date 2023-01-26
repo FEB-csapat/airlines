@@ -11,7 +11,6 @@ namespace AirlinesApi
         {
             builder = WebApplication.CreateBuilder(args ?? new string[0]);
 
-            // Add services to the container.
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -19,9 +18,14 @@ namespace AirlinesApi
 
             builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
+
+            
+
             app = builder.Build();
 
-            app.UseHttpsRedirection();
+
+            app.UseCors(builder => builder.WithOrigins("*").AllowAnyHeader());
+
 
             app.UseAuthorization();
 

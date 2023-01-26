@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Database.Model
 {
-    public class Flight : JsonConverter
+    public class Flight
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,10 +23,10 @@ namespace Database.Database.Model
         public virtual City? Destination { get; set; }
         public int? DestinationId { get; set; }
 
-        public int? Distance { get; set; }
+        public int Distance { get; set; }
 
-        public int? FlightDuration { get; set; }
-        public int? KmPrice { get; set; }
+        public int FlightDuration { get; set; }
+        public int KmPrice { get; set; }
 
 
         [JsonConstructor]
@@ -45,14 +45,20 @@ namespace Database.Database.Model
 
         }
 
-        public void Modify(FlightViewModel flight)
+        public void Modify(FlightInputViewModel flight)
         {
-            From = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.FromId);
-            Destination = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.DestinationId);
-            Airline = Context.Instance.Airlines.SingleOrDefault(x => x.Id == flight.AirlineId);
+            FromId = flight.FromId;
+            DestinationId = flight.DestinationId;
+            AirlineId = flight.AirlineId;
             Distance = flight.Distance;
             KmPrice = flight.KmPrice;
             FlightDuration = flight.FlightDuration;
+        }
+
+
+        public FlightOutputViewModel createOutputModel()
+        {
+            return new FlightOutputViewModel(Id, Airline, From, Destination, Distance, FlightDuration, KmPrice);
         }
 
         public string ToJson()
@@ -63,21 +69,6 @@ namespace Database.Database.Model
         public static Flight? FromJson(string json)
         {
             return JsonConvert.DeserializeObject<Flight>(json);
-        }
-
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
-        {
-            serializer.Serialize(writer, value);
-        }
-
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
-        {
-            return serializer.Deserialize(reader, objectType);
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return true;
         }
     }
 }

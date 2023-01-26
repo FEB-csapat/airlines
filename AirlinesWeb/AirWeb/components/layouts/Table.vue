@@ -1,6 +1,6 @@
 <template>
-<table class="table table-striped">
-    <thead>
+<table class="table table-striped m-2 text-center">
+    <thead class="bg-success bg-opacity ">
         <tr>
             <th>Légitársaság</th>
             <th>Kiinduló város</th>
@@ -8,10 +8,11 @@
             <th>Távolság (km)</th>
             <th>Repülési időtartam</th>
             <th>Kilométer ár</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <table-row v-for="flight in flights" :key="flight.id" :id="flight.id" :tarsasag="flight.Airline" :kiindulas="flight.From" :celvaros="flight.Destination" :tavolas="flight.Distance" :idotartam="flight.Flightduration" :kmar="flight.KmPrice" @add-to-cart="AddToCart" ></table-row>
+        <table-row v-for="flight in flights" :key="flight.Id" :id="flight.Id" :tarsasag="flight.Airline.Name" :kiindulas="flight.From.Name" :celvaros="flight.Destination.Name" :tavolsag="flight.Distance" :idotartam="flight.FlightDuration" :kmar="flight.KmPrice" @add-to-cart="AddToCart" ></table-row>
     </tbody>
 </table>
 </template>
@@ -31,7 +32,7 @@ export default{
     },
     methods:{
         AddToCart(id){
-            const item = this.flights.find(item=>item.id === id );
+            const item = this.flights.find(item=>item.Id === id );
             alert('Sikeres kosárba tétel!');
             this.cart.push(item);
             localStorage.setItem('cart',JSON.stringify(this.cart));
@@ -39,3 +40,6 @@ export default{
     }
 }
 </script>
+<style>
+
+</style>

@@ -1,11 +1,11 @@
 <template>
 <tr>
-    <td>{{tarsasag}}</td>
-    <td>{{kiindulas}}</td>
-    <td>{{celvaros}}</td>
-    <td>{{tavolsag}}</td>
-    <td>{{idotartam}}</td>
-    <td>{{kmar}}</td>
+    <td class="align-middle">{{tarsasag}}</td>
+    <td class="align-middle">{{kiindulas}}</td>
+    <td class="align-middle">{{celvaros}}</td>
+    <td class="align-middle">{{tavolsag}} km</td>
+    <td class="align-middle">{{idotartam}} perc</td>
+    <td class="align-middle">{{kmar}} Ft</td>
 
     <td><button class="btn btn-success" @click="$emit('AddToCart',id)">Kosárba teszem</button></td>
 </tr>
