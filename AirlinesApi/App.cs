@@ -21,7 +21,7 @@ namespace AirlinesApi
             app = builder.Build();
 
 
-            app.UseCors(builder => builder.WithOrigins("https://localhost:5000").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("*").AllowAnyHeader());
 
 
             app.UseAuthorization();
