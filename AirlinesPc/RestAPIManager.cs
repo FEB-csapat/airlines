@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Database.Database.Model.ViewModel;
 
 namespace AirlinesPc
 {
@@ -20,14 +21,25 @@ namespace AirlinesPc
             kliens.DefaultRequestHeaders.Accept.Clear();
             kliens.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public Flights GetFlight(int id)
+        public Flight GetAirline(int id)
         {
-            Flights visszateres = null;
+            Flight visszateres = null;
             HttpResponseMessage valasz = kliens.GetAsync("flights/" + id).Result;
             if (valasz.IsSuccessStatusCode)
             {
                 string str = valasz.Content.ReadAsStringAsync().Result;
-                visszateres = JsonSerializer.Deserialize<Flights>(str);
+                visszateres = Flight.FromJson(str);
+            }
+            return visszateres;
+        }
+        public City GetCity(string path)
+        {
+            City visszateres = null;
+            HttpResponseMessage valasz = kliens.GetAsync(path).Result;
+            if (valasz.IsSuccessStatusCode)
+            {
+                string str = valasz.Content.ReadAsStringAsync().Result;
+                visszateres = City.FromJson(str);
             }
             return visszateres;
         }

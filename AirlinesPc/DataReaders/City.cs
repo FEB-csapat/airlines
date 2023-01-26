@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Automation.Peers;
 
 namespace AirlinesPc.DataReaders
 {
@@ -10,12 +9,21 @@ namespace AirlinesPc.DataReaders
     {
         public string Name { get; private set; }
         public int Population { get; private set; }
-        public City(string row)
+
+        [JsonConstructor]
+        public City(string name, int population)
         {
-            string[] helper = row.Split(';');
-            Name = helper[0];
-            Population = int.Parse(helper[1]);
+            Name = name;
+            Population = population;
+        }
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
         }
 
+        public static City? FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<City>(json);
+        }
     }
 }
