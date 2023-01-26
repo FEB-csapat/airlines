@@ -18,7 +18,7 @@ namespace AirlinesPc
         public List<CityPopulation> Cities = new List<CityPopulation>();
         public List<Flights> FlightRoutes = new List<Flights>();
         CityPopulation helper;
-        int currentrow = 0;
+        public int currentrow=0;
         Button[] buttons = new Button[350];
         int buttoncounter = 0;
         public MainWindow()
@@ -241,38 +241,40 @@ namespace AirlinesPc
         }
         public void MoreDetails()
         {
-            buttoncounter = 0;
-            FlightsGrid.Children.Clear();
-            FlightsGrid.RowDefinitions.Clear();
-            FlightsGrid.ColumnDefinitions.Clear();
-            for (int i = 0; i < FlightRoutes.Count+3; i++)
-            {
-                FlightsGrid.RowDefinitions.Add(new RowDefinition());
-                FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
-            }
-            for (int i = 0; i <= 6; i++)
-            {
-                FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition());
-                FlightsGrid.ColumnDefinitions[i].Width = new GridLength(130, GridUnitType.Pixel);
-            }
-            DetailHeader();
-            int currentdetails = 0;
-            for (int i = 0; i < FlightRoutes.Count; i++)
-            {
-                if (i!=currentrow||i+1!=currentrow+1)
-                {
-                    Details(FlightRoutes[i], i + 1+currentdetails);
-                }
-                else
-                {
-                    HeaderGenerate(currentrow + 1);
-                    FlightContent(FlightRoutes[currentrow - 1], currentrow + 2);
-                    i++;
-                    Details(FlightRoutes[i-1], i + 2);
-                    Details(FlightRoutes[i], i+3);
-                    currentdetails += 2;
-                }
-            }
+            //buttoncounter = 0;
+            //FlightsGrid.Children.Clear();
+            //FlightsGrid.RowDefinitions.Clear();
+            //FlightsGrid.ColumnDefinitions.Clear();
+            //for (int i = 0; i < FlightRoutes.Count+3; i++)
+            //{
+            //    FlightsGrid.RowDefinitions.Add(new RowDefinition());
+            //    FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
+            //}
+            //for (int i = 0; i <= 6; i++)
+            //{
+            //    FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            //    FlightsGrid.ColumnDefinitions[i].Width = new GridLength(130, GridUnitType.Pixel);
+            //}
+            //DetailHeader();
+            //int currentdetails = 0;
+            //for (int i = 0; i < FlightRoutes.Count; i++)
+            //{
+            //    if (i!=currentrow||i+1!=currentrow+1)
+            //    {
+            //        Details(FlightRoutes[i], i + 1+currentdetails);
+            //    }
+            //    else
+            //    {
+            //        HeaderGenerate(currentrow + 1);
+            //        FlightContent(FlightRoutes[currentrow - 1], currentrow + 2);
+            //        i++;
+            //        Details(FlightRoutes[i-1], i + 2);
+            //        Details(FlightRoutes[i], i+3);
+            //        currentdetails += 2;
+            //    }
+            //}
+            DetailedWindow window = new DetailedWindow(FlightRoutes[currentrow-1]);
+            window.Show();
         }
         public void DetailHeader()
         {
