@@ -18,13 +18,10 @@ namespace AirlinesApi
 
             builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-
-            
-
             app = builder.Build();
 
 
-            app.UseCors(builder => builder.WithOrigins("*").AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("https://localhost:5000").AllowAnyHeader());
 
 
             app.UseAuthorization();
