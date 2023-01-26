@@ -6,8 +6,10 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/style.css'
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+//app.UseCors(builder => builder.WithOrigins("*"));
+
+app.mount('#app');

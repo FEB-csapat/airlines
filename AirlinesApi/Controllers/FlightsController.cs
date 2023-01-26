@@ -2,6 +2,7 @@
 using Database.Database.Model;
 using Database.Database.Model.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
 namespace AirlinesApi.Controllers
@@ -13,44 +14,50 @@ namespace AirlinesApi.Controllers
         [HttpGet]
         public string Get()
         {
-            return JsonSerializer.Serialize(Context.Instance.Flights.ToList());
+            List<FlightOutputViewModel> flights = Context.Instance.Flights
+                .Include(x => x.Airline)
+                .Include(x => x.From)
+                .Include(x => x.Destination)
+                .Select(x => x.createOutputModel())
+                .ToList();
+
+            return JsonSerializer.Serialize(flights);
         }
 
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            Flight? result = Context.Instance.Flights.SingleOrDefault(x => x.Id == id);
+            Flight? result = Context.Instance.Flights
+                .Include(x => x.Airline)
+                .Include(x => x.From)
+                .Include(x => x.Destination)
+                .SingleOrDefault(x => x.Id == id);
 
             if (result != null)
             {
-                return result.ToJson();
+                return result.createOutputModel().ToJson();
             }
             return "null";
         }
 
         [HttpPost]
-        public void Post([FromBody] FlightViewModel flight)
+        public void Post([FromBody] FlightInputViewModel flight)
         {
             if (flight != null)
             {
-                Flight real = new Flight();
-
-                real.From = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.FromId);
-                real.Destination = Context.Instance.Cities.SingleOrDefault(x => x.Id == flight.DestinationId);
-                real.Airline = Context.Instance.Airlines.SingleOrDefault(x => x.Id == flight.AirlineId);
-                real.Distance = flight.Distance;
-                real.KmPrice = flight.KmPrice;
-                real.FlightDuration = flight.FlightDuration;
-
-                Context.Instance.Flights.Add(real);
+                Context.Instance.Flights.Add(flight.CreateDatabaseModel());
                 Context.Instance.SaveChanges();
             }
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] FlightViewModel change)
+        public void Put(int id, [FromBody] FlightInputViewModel change)
         {
-            Flight? result = Context.Instance.Flights.SingleOrDefault(x => x.Id == id);
+            Flight? result = Context.Instance.Flights
+                .Include(x => x.Airline)
+                .Include(x => x.From)
+                .Include(x => x.Destination)
+                .SingleOrDefault(x => x.Id == id);
 
             if (result != null)
             {

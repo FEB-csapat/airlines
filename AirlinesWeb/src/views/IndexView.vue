@@ -1,9 +1,9 @@
 <template>
 <div class="container">
     <div class="bg-success m-2 w-100 rounded-3 p-2 text-center ">
-        <h1>
+        <h2>
             Menetrend kereső
-        </h1>
+        </h2>
     </div>
     <flight-table :flights="flights"></flight-table>
 </div>
@@ -18,32 +18,18 @@ export default{
     },
     data(){
         return{
-            flights: [
-                {
-                    id:0,
-                    Airline: "wizz",
-                    From: "amerika",
-                    Destination: "Berlin",
-                    Distance: 50,
-                    FlightDuration: 60,
-                    KmPrice:2
-
-                },
-                {
-                    id:1,
-                    Airline: "luft",
-                    From: "kongo",
-                    Destination: "madrid",
-                    Distance: 40,
-                    FlightDuration: 60,
-                    KmPrice:1
-                }
-            ]
+            flights: []
         }
     },
     methods:{
         async dataFetch(){
-            const resp = await fetch();
+
+            const headers = {'Content-Type':'application/json'}
+            const resp = await fetch('https://localhost:5000/flights',
+            {
+                method: 'GET',
+                headers: headers
+            });
             this.flights = await resp.json();
         }
     },
@@ -58,5 +44,6 @@ export default{
         background: url('../img/airport.jpg');
         background-repeat: no-repeat;
         background-size: cover;
+        background-attachment: fixed;
     }
 </style>

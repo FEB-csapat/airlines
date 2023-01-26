@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Database.Database.Model
 {
-    public class City : JsonConverter
+    public class City
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -30,7 +30,6 @@ namespace Database.Database.Model
             Population = city.Population;
         }
 
-
         public string ToJson()
         {
             return JsonConvert.SerializeObject(this);
@@ -39,23 +38,6 @@ namespace Database.Database.Model
         public static City? FromJson(string json)
         {
             return JsonConvert.DeserializeObject<City>(json);
-        }
-
-
-
-        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
-        {
-            serializer.Serialize(writer, value);
-        }
-
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
-        {
-            return serializer.Deserialize(reader, objectType);
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return true;
         }
     }
 }
