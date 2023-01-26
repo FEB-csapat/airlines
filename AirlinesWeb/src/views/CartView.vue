@@ -21,7 +21,7 @@
             <td>{{item.Airline.Name}}</td>
             <td>{{item.From.Name}}</td>
             <td>{{item.Destination.Name}}</td>
-            <td>{{item.Distance}} Ft</td> <!--Szorozni kell a darabszámmal-->
+            <td>{{item.Distance * item.KmPrice *1.27 + item.Distance*0.1}} Ft</td> <!--Szorozni kell a darabszámmal-->
             <td><button class="btn btn-danger" @click="deleteItem(item.Id)" >Törlés</button></td>
         </tr>
     </tbody>
