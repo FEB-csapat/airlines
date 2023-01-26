@@ -1,28 +1,28 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AirlinesApi.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Database.Database.Model;
 using System.Text.Json;
 using Database.Database.Model.ViewModel;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace AirlinesApi.Controllers.Tests
 {
     [TestClass()]
     public class AirlinesControllerTests
     {
-        int testId;
-        string testName = "Test123";
+        private static int testId;
+        private static string testName;
+         
+        private static string changedName;
+        
+        private static AirlinesController airlinesController = new AirlinesController();
+
+        public AirlinesControllerTests() {
+            testName ??= DateTime.Now.ToString();
+            changedName = "Repcsi airlines" + DateTime.Now.ToString();
+        }
 
         [TestMethod()]
-        public void PostTest()
+        public void T00001_PostTest()
         {
-            AirlinesController airlinesController = new AirlinesController();
-
             ViewModelAirline airline = new ViewModelAirline();
             airline.Name = testName;
 
@@ -30,12 +30,10 @@ namespace AirlinesApi.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTest()
+        public void T00002_GetListTest()
         {
-            AirlinesController airlinesController = new AirlinesController();
-
             string json = airlinesController.Get();
-            List<Airline>? list = JsonSerializer.Deserialize<List<Airline>>(json);//Serialize(Context.Instance.Airlines.ToList());
+            List<Airline>? list = JsonSerializer.Deserialize<List<Airline>>(json);
 
             Assert.IsNotNull(list);
 
@@ -49,10 +47,8 @@ namespace AirlinesApi.Controllers.Tests
         }
 
         [TestMethod()]
-        public void GetTest2()
+        public void T00003_GetItemTest()
         {
-            AirlinesController airlinesController = new AirlinesController();
-
             string? json = airlinesController.Get(testId);
 
             Assert.IsNotNull(json);
@@ -66,21 +62,32 @@ namespace AirlinesApi.Controllers.Tests
         }
 
         [TestMethod()]
-        public void PutTest()
+        public void T00004_PutTest()
         {
-            Assert.Fail();
+            ViewModelAirline viewModelAirline = new ViewModelAirline(changedName);
+
+            airlinesController.Put(testId, viewModelAirline);
+
+            string? json = airlinesController.Get(testId);
+
+            Assert.IsNotNull(json);
+
+            Airline? changedAirline = Airline.FromJson(json);
+
+            Assert.IsNotNull(changedAirline);
+
+            Assert.IsTrue(changedAirline.Id == testId);
+
+            Assert.IsTrue(changedAirline.Name == viewModelAirline.Name);
+
         }
 
         [TestMethod()]
-        public void DeleteTest()
+        public void T00005_DeleteTest()
         {
-            AirlinesController airlinesController = new AirlinesController();
-
-
             airlinesController.Delete(testId);
 
             string? deletedAirlineJson = airlinesController.Get(testId);
-
 
             Assert.IsNull(deletedAirlineJson);
         }
