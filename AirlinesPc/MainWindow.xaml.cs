@@ -15,9 +15,9 @@ namespace AirlinesPc
     {
         public List<string> StartingCities = new List<string>();
         public List<string> TargetCities = new List<string>();
-        public List<CityPopulation> Cities = new List<CityPopulation>();
+        public List<City> Cities = new List<City>();
         public List<Flights> FlightRoutes = new List<Flights>();
-        CityPopulation helper;
+        City helper;
         int currentrow = 0;
         Button[] buttons = new Button[350];
         int buttoncounter = 0;
@@ -33,9 +33,9 @@ namespace AirlinesPc
         {
             foreach (var item in File.ReadAllLines("CityPopulation.csv", Encoding.Default))
             {
-                helper = new CityPopulation(item);
+                helper = new City(item);
                 Cities.Add(helper);
-                StartingCities.Add(helper.CityName);
+                StartingCities.Add(helper.Name);
             }
             foreach (var item in File.ReadLines("Flights.csv", Encoding.Default).Skip(1))
             {
