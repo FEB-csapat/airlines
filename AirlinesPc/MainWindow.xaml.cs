@@ -42,7 +42,6 @@ namespace AirlinesPc
             {
                 FlightRoutes.Add(new Flights(item));
             }
-            RestAPIManager retapimanager = new RestAPIManager("https://localhost:7245/");
             StartingCities = StartingCities.OrderBy(x => x).ToList();
             TargetCities = StartingCities;
         }
@@ -68,6 +67,7 @@ namespace AirlinesPc
                 MessageBox.Show("Nem lehet megegyező az indulóváros, és a célváros!");
             }
         }
+        //Header for details
         public void HeaderGenerate(int row)
         { 
             int cols=0;
@@ -120,6 +120,7 @@ namespace AirlinesPc
             Grid.SetRow(label, row);
             cols++;
         }
+        //Listing details
         public void FlightContent(Flights item,int rows)
         {
             int cols = 0;
@@ -173,6 +174,7 @@ namespace AirlinesPc
             cols++;
             rows++;
         }
+        //Direct flights
         public void ShowFlights()
         {
             buttoncounter = 0;
@@ -195,6 +197,7 @@ namespace AirlinesPc
                 }
             }
         }
+        //Data for all flights
         public void Details(Flights item, int rows)
         {
             int cols = 0;
@@ -240,6 +243,7 @@ namespace AirlinesPc
             cols++;
             rows++;
         }
+        //redirect to detailwindow
         public void MoreDetails()
         {
             City targetcity = Cities.Where(x => x.Name == FlightRoutes[currentrow - 1].TargetCity).First();
@@ -247,6 +251,7 @@ namespace AirlinesPc
             DetailedWindow window = new DetailedWindow(FlightRoutes[currentrow-1],populacio);
             window.Show();
         }
+        //header for all flights
         public void DetailHeader()
         {
             int cols = 0;
@@ -285,6 +290,7 @@ namespace AirlinesPc
             Button currentButton = buttons[currentrow-1];
             MoreDetails();
         }
+        //listing all flights
         public void ListAllFlights()
         {
             FlightsGrid.Children.Clear();
@@ -306,23 +312,25 @@ namespace AirlinesPc
                 Details(FlightRoutes[i], i + 1);
             }
         }
+        //Gets all possible destinations with transfers
         public void GetTransfers()
         {
             Transfers.Clear();
             TargetCity.IsEnabled = false;
+            string startingcityname = StartingCity.SelectedValue.ToString();
             foreach (var item in FlightRoutes)
             {
-                if (item.StartCity== StartingCity.SelectedValue.ToString()&&!Transfers.Contains(item.TargetCity))
+                if (item.StartCity== startingcityname && !Transfers.Contains(item.TargetCity)&&item.TargetCity!= startingcityname)
                 {
                     Transfers.Add(item.TargetCity);
                     foreach (var flight in FlightRoutes)
                     {
-                        if (flight.StartCity==item.TargetCity && !Transfers.Contains(flight.TargetCity))
+                        if (flight.StartCity==item.TargetCity && !Transfers.Contains(flight.TargetCity) && flight.TargetCity != startingcityname)
                         {
                             Transfers.Add(flight.TargetCity);
                             foreach (var transfer in FlightRoutes)
                             {
-                                if (transfer.StartCity==flight.TargetCity && !Transfers.Contains(transfer.TargetCity))
+                                if (transfer.StartCity==flight.TargetCity && !Transfers.Contains(transfer.TargetCity) && transfer.TargetCity != startingcityname)
                                 {
                                     Transfers.Add(transfer.TargetCity);
                                 }
@@ -332,6 +340,7 @@ namespace AirlinesPc
                 }
             }
         }
+        //Lists all possible destinations with transfers
         public void ListTwoTransfers()
         {
             FlightsGrid.Children.Clear();
@@ -368,9 +377,7 @@ namespace AirlinesPc
         private void ShowAllFlights_Click(object sender, RoutedEventArgs e)
         {
             ListAllFlights();
-            
         }
-
         private void ShowTransfers_Click(object sender, RoutedEventArgs e)
         {
             if (StartingCity.SelectedValue is not null)
