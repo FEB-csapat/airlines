@@ -273,7 +273,9 @@ namespace AirlinesPc
             //        currentdetails += 2;
             //    }
             //}
-            DetailedWindow window = new DetailedWindow(FlightRoutes[currentrow-1]);
+            City targetvaros = Cities.Where(x => x.Name == FlightRoutes[currentrow - 1].TargetCity).First();
+            int populacio = targetvaros.Population;
+            DetailedWindow window = new DetailedWindow(FlightRoutes[currentrow-1],populacio);
             window.Show();
         }
         public void DetailHeader()
