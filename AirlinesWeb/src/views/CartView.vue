@@ -12,7 +12,8 @@
         <th>Társaság:</th>
         <th>Kiinduló város:</th>
         <th>Cél város:</th>
-        <th>Jegy(ek) ára (  {{ db }} darab )</th>
+        <th>Jegy(ek) ára</th>
+        <th>Darabszám:</th>
         <th></th>
     </tr>
     </thead>
@@ -21,7 +22,8 @@
             <td>{{item.Airline.Name}}</td>
             <td>{{item.From.Name}}</td>
             <td>{{item.Destination.Name}}</td>
-            <td>{{item.Distance * item.KmPrice *1.27 + item.Distance*0.1}} Ft</td> <!--Szorozni kell a darabszámmal-->
+            <td>{{(item.Distance * item.KmPrice *1.27 + item.Distance*0.1)*item.Db}} Ft</td>
+            <td>{{ item.Db }}</td>
             <td><button class="btn btn-danger" @click="deleteItem(item.Id)" >Törlés</button></td>
         </tr>
     </tbody>
@@ -35,12 +37,12 @@ export default{
     name: "Cartview.vue",
     data(){
         return{
-             cart:[]
+            cart:[]
         }
     },
     methods:{
         getCart(){
-            this.cart = JSON.parse(localStorage.getItem('cart')) ?? []
+            this.cart = JSON.parse(localStorage.getItem('cart')) ?? [];
         },
         deleteItem(id){
             const ind = this.cart.findIndex(item => item.Id ===id);

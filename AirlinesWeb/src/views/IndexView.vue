@@ -31,10 +31,13 @@ export default{
                 headers: headers
             });
             this.flights = await resp.json();
+            this.flights.forEach(x=> x['Db']=0);
+            console.log(this.flights);
         }
     },
     mounted(){
         this.dataFetch();
+
     }
     }
 </script>

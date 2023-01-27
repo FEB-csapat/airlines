@@ -9,10 +9,13 @@
             <th class="align-middle" >Repülési időtartam</th>
             <th class="align-middle" >Kilométer ár</th>
             <th class="align-middle" ></th>
+            <th class="align-middle">Darab</th>
+            <th class="align-middle" ></th>
+            <th class="align-middle" ></th>
         </tr>
     </thead>
     <tbody>
-        <table-row v-for="flight in flights" :key="flight.Id" :id="flight.Id" :tarsasag="flight.Airline.Name" :kiindulas="flight.From.Name" :celvaros="flight.Destination.Name" :tavolsag="flight.Distance" :idotartam="flight.FlightDuration" :kmar="flight.KmPrice" @add-to-cart="AddToCart" ></table-row>
+        <table-row v-for="flight in flights" :key="flight.Id" :id="flight.Id" :tarsasag="flight.Airline.Name" :kiindulas="flight.From.Name" :celvaros="flight.Destination.Name" :tavolsag="flight.Distance" :idotartam="flight.FlightDuration" :kmar="flight.KmPrice" :db="flight.Db" @add-to-cart="AddToCart" @dec-quant="DecQuant" @add-quant="AddQuant"></table-row>
     </tbody>
 </table>
 </template>
@@ -36,6 +39,18 @@ export default{
             alert('Sikeres kosárba tétel!');
             this.cart.push(item);
             localStorage.setItem('cart',JSON.stringify(this.cart));
+        },
+        AddQuant(id){
+            this.flights.find(item=> item.Id ===id).Db++;
+        },
+        DecQuant(id){
+            const szam = this.flights.find(item=> item.Id ===id).Db;
+
+            if(szam!=0)
+            {
+                this.flights.find(item=> item.Id ===id).Db--;
+            }
+            
         }
     }
 }
