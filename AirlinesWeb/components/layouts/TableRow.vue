@@ -6,6 +6,9 @@
     <td class="align-middle">{{tavolsag}} km</td>
     <td class="align-middle">{{idotartam}} perc</td>
     <td class="align-middle">{{kmar}} Ft</td>
+    <td><button class="btn btn-danger" @click="$emit('DecQuant',id)">-</button></td>
+    <td class="align-middle">{{ db }}</td>
+    <td><button class="btn btn-primary" @click="$emit('AddQuant',id)">+</button></td>
 
     <td><button class="btn btn-success" @click="$emit('AddToCart',id)">Kosárba teszem</button></td>
 </tr>
@@ -19,8 +22,9 @@ export default{
         celvaros: String,
         tavolsag: Number,
         idotartam: Number,
-        kmar: Number
+        kmar: Number,
+        db: Number
     },
-    emits: ['AddToCart']
+    emits: ['AddToCart','DecQuant', 'AddQuant']
 }
 </script>
