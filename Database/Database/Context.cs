@@ -27,17 +27,15 @@ namespace Database.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            SqlConnectionStringBuilder builder1 = new SqlConnectionStringBuilder();
-            builder1.DataSource = "localhost, 1433";
-            builder1.InitialCatalog = "Airlines2";
-            builder1.Authentication = SqlAuthenticationMethod.SqlPassword;
-            builder1.UserID = "sa";
-            builder1.Password = "Database123456!";
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = "localhost, 1433";
+            builder.InitialCatalog = "Airlines2";
+            builder.Authentication = SqlAuthenticationMethod.SqlPassword;
+            builder.UserID = "sa";
+            builder.Password = "Database123456!";
 
             optionsBuilder.EnableSensitiveDataLogging();
-
-            optionsBuilder.UseSqlServer(builder1.ConnectionString);
-
+            optionsBuilder.UseSqlServer(builder.ConnectionString);
             optionsBuilder.UseSqlServer();
         }
 

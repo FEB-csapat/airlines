@@ -13,6 +13,7 @@ namespace Database.Database.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string Name { get; set; }
 
         [JsonConstructor]
@@ -26,11 +27,10 @@ namespace Database.Database.Model
 
         }
 
-        public void Modify(ViewModelAirline airline)
+        public void Modify(Airline airline)
         {
             Name = airline.Name;
         }
-
 
         public string ToJson()
         {

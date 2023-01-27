@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\Database\AirlinesDatabase.csproj" />
   </ItemGroup>
 
 </Project>

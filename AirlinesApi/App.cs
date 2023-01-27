@@ -31,7 +31,6 @@ namespace AirlinesApi
         public static void RunDev(string[]? args = null)
         {
             Initialize(args);
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

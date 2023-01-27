@@ -7,16 +7,11 @@ namespace Database.Database.Model.ViewModel
 {
     public class FlightInputViewModel
     {
-
         public int AirlineId { get; set; }
-
         public int FromId { get; set; }
-
         public int DestinationId { get; set; }
 
-
         public int Distance { get; set; }
-
         public int FlightDuration { get; set; }
         public int KmPrice { get; set; }
 

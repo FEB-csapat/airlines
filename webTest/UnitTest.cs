@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 namespace webTest
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         [TestClass]
         public class ChromeDriverTest

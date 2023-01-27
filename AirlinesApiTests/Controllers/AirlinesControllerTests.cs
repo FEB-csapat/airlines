@@ -23,7 +23,7 @@ namespace AirlinesApi.Controllers.Tests
         [TestMethod()]
         public void T00001_PostTest()
         {
-            ViewModelAirline airline = new ViewModelAirline();
+            Airline airline = new Airline();
             airline.Name = testName;
 
             airlinesController.Post(airline);
@@ -64,7 +64,7 @@ namespace AirlinesApi.Controllers.Tests
         [TestMethod()]
         public void T00004_PutTest()
         {
-            ViewModelAirline viewModelAirline = new ViewModelAirline(changedName);
+            Airline viewModelAirline = new Airline(changedName);
 
             airlinesController.Put(testId, viewModelAirline);
 

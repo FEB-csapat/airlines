@@ -24,7 +24,6 @@ namespace Database.Database.Model
         public int? DestinationId { get; set; }
 
         public int Distance { get; set; }
-
         public int FlightDuration { get; set; }
         public int KmPrice { get; set; }
 

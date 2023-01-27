@@ -32,7 +32,7 @@ namespace AirlinesApi.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] ViewModelAirline airline)
+        public void Post([FromBody] Airline airline)
         {
             if (airline != null)
             {
@@ -44,7 +44,7 @@ namespace AirlinesApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] ViewModelAirline change)
+        public void Put(int id, [FromBody] Airline change)
         {
             Airline? result = Context.Instance.Airlines.SingleOrDefault(x => x.Id == id);
             if (result != null)
