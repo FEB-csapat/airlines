@@ -15,6 +15,7 @@ namespace AirlinesPc
     {
         public List<string> StartingCities = new List<string>();
         public List<string> TargetCities = new List<string>();
+        List<string> Transfers = new List<string>();
         public List<City> Cities = new List<City>();
         public List<Flights> FlightRoutes = new List<Flights>();
         City helper;
@@ -241,40 +242,8 @@ namespace AirlinesPc
         }
         public void MoreDetails()
         {
-            //buttoncounter = 0;
-            //FlightsGrid.Children.Clear();
-            //FlightsGrid.RowDefinitions.Clear();
-            //FlightsGrid.ColumnDefinitions.Clear();
-            //for (int i = 0; i < FlightRoutes.Count+3; i++)
-            //{
-            //    FlightsGrid.RowDefinitions.Add(new RowDefinition());
-            //    FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
-            //}
-            //for (int i = 0; i <= 6; i++)
-            //{
-            //    FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition());
-            //    FlightsGrid.ColumnDefinitions[i].Width = new GridLength(130, GridUnitType.Pixel);
-            //}
-            //DetailHeader();
-            //int currentdetails = 0;
-            //for (int i = 0; i < FlightRoutes.Count; i++)
-            //{
-            //    if (i!=currentrow||i+1!=currentrow+1)
-            //    {
-            //        Details(FlightRoutes[i], i + 1+currentdetails);
-            //    }
-            //    else
-            //    {
-            //        HeaderGenerate(currentrow + 1);
-            //        FlightContent(FlightRoutes[currentrow - 1], currentrow + 2);
-            //        i++;
-            //        Details(FlightRoutes[i-1], i + 2);
-            //        Details(FlightRoutes[i], i+3);
-            //        currentdetails += 2;
-            //    }
-            //}
-            City targetvaros = Cities.Where(x => x.Name == FlightRoutes[currentrow - 1].TargetCity).First();
-            int populacio = targetvaros.Population;
+            City targetcity = Cities.Where(x => x.Name == FlightRoutes[currentrow - 1].TargetCity).First();
+            int populacio = targetcity.Population;
             DetailedWindow window = new DetailedWindow(FlightRoutes[currentrow-1],populacio);
             window.Show();
         }
@@ -337,15 +306,82 @@ namespace AirlinesPc
                 Details(FlightRoutes[i], i + 1);
             }
         }
+        public void GetTransfers()
+        {
+            Transfers.Clear();
+            TargetCity.IsEnabled = false;
+            foreach (var item in FlightRoutes)
+            {
+                if (item.StartCity== StartingCity.SelectedValue.ToString()&&!Transfers.Contains(item.TargetCity))
+                {
+                    Transfers.Add(item.TargetCity);
+                    foreach (var flight in FlightRoutes)
+                    {
+                        if (flight.StartCity==item.TargetCity && !Transfers.Contains(flight.TargetCity))
+                        {
+                            Transfers.Add(flight.TargetCity);
+                            foreach (var transfer in FlightRoutes)
+                            {
+                                if (transfer.StartCity==flight.TargetCity && !Transfers.Contains(transfer.TargetCity))
+                                {
+                                    Transfers.Add(transfer.TargetCity);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         public void ListTwoTransfers()
         {
             FlightsGrid.Children.Clear();
             FlightsGrid.RowDefinitions.Clear();
             FlightsGrid.ColumnDefinitions.Clear();
+            for (int i = 0; i < Transfers.Count + 1; i++)
+            {
+                FlightsGrid.RowDefinitions.Add(new RowDefinition());
+                FlightsGrid.RowDefinitions[i].Height = new GridLength(50, GridUnitType.Pixel);
+            }
+            FlightsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            FlightsGrid.ColumnDefinitions[0].Width = new GridLength(130, GridUnitType.Pixel);
+            int cols = 0;
+            var label = new Label()
+            {
+                Content = "Lehetséges célpontok:"
+            };
+            FlightsGrid.Children.Add(label);
+            Grid.SetColumn(label, cols);
+            Grid.SetRow(label, 0);
+            int rows = 1;
+            foreach (var item in Transfers)
+            {
+                label = new Label()
+                {
+                    Content = item
+                };
+                FlightsGrid.Children.Add(label);
+                Grid.SetColumn(label, 0);
+                Grid.SetRow(label, rows);
+                rows++;
+            }
         }
         private void ShowAllFlights_Click(object sender, RoutedEventArgs e)
         {
             ListAllFlights();
+            
+        }
+
+        private void ShowTransfers_Click(object sender, RoutedEventArgs e)
+        {
+            if (StartingCity.SelectedValue is not null)
+            {
+                GetTransfers();
+                ListTwoTransfers();
+            }
+            else
+            {
+                MessageBox.Show("Elöbb válasszon várost!");
+            }
         }
     }
 }
