@@ -24,15 +24,17 @@
             <Label Content="Légitársaság neve:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Kiinduló város" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Cél város:" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label Content="útvonal távolsága(km):" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Útvonal távolsága(km):" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Repülési idő(perc):" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label Content="km díj(Ft)" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Content="Km díj(Ft)" Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Alapdíj:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Bruttó díj:" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Content="Darab:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-           <ComboBox Grid.Row="2" Grid.Column="2" Height="20" Width="50" HorizontalAlignment="Right" Name="Cutasszam" ItemsSource="{Binding Jegydb}" SelectionChanged="ComboBox_SelectionChanged"/>
+           <ComboBox Grid.Row="2" Grid.Column="2" Height="20" Width="45" HorizontalAlignment="Center" Name="Utasszam" ItemsSource="{Binding Jegydb}" SelectionChanged="ComboBox_SelectionChanged"/>
         <Button Content="Vissza" Click="Button_Click" Grid.Row="2" Grid.Column="5" Width="130" Height="30" />
             <Label Name="Lalapdij" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Name="Lbruttodij" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label Content="Ebből 16 éven aluli: " Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <ComboBox Grid.Row="2" Grid.Column="4" Height="20" Width="100" HorizontalAlignment="Left" Name="Gyermekek" SelectionChanged="Gyermekek_SelectionChanged" IsEnabled="False"/>
     </Grid>
 </Window>
