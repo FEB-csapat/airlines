@@ -22,7 +22,7 @@
             <td>{{item.Airline.Name}}</td>
             <td>{{item.From.Name}}</td>
             <td>{{item.Destination.Name}}</td>
-            <td>{{(item.Distance * item.KmPrice *1.27 + item.Distance*0.1)*item.Db}} Ft</td>
+            <td>{{Math.round((item.Distance * item.KmPrice *1.27 + item.Distance*0.1)*item.Db)}} Ft</td>
             <td>{{ item.Db }}</td>
             <td><button class="btn btn-danger" @click="deleteItem(item.Id)" >Törlés</button></td>
         </tr>
