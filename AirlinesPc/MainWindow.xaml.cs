@@ -337,6 +337,12 @@ namespace AirlinesPc
                 Details(FlightRoutes[i], i + 1);
             }
         }
+        public void ListTwoTransfers()
+        {
+            FlightsGrid.Children.Clear();
+            FlightsGrid.RowDefinitions.Clear();
+            FlightsGrid.ColumnDefinitions.Clear();
+        }
         private void ShowAllFlights_Click(object sender, RoutedEventArgs e)
         {
             ListAllFlights();
